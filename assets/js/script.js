@@ -1,3 +1,5 @@
+const searchHistUL = document.querySelector(`#search-history`);
+
 const getAdvice = function(searchTerm){
     fetch(`https://api.adviceslip.com/advice/search/${searchTerm}`).then(function(response) {
         console.log(response)
@@ -34,5 +36,37 @@ const transPirate = function(advice){
     })
 };
 
+const saveSearch = function(searchTerm) {
+    var savePull = JSON.parse(localStorage.getItem("searchHist")) || [];
+    
+    savePull.push({
+        search: searchTerm
+    });
+    localStorage.setItem("searchHist", JSON.stringify(savePull));
+};
+
+const loadSearch = function() {
+    var saves = JSON.parse(localStorage.getItem("searchHist"));
+
+    if (!saves) {
+        return
+    } else {
+        for (i = 0; i < saves.length; i++) {
+            historyAdd(saves[i].search); 
+        }
+    }
+}
+
+var historyAdd = function(searchTerm) {
+    var newHisEl = document.createElement(`li`);
+    var newHis = document.createTextNode(`${searchTerm}`);
+
+    newHisEl.appendChild(newHis)
+    searchHistUL.append(newHisEl);
+
+};
+
+loadSearch();
+
 getAdvice(`spiders`);
-// `spiders` will change to user input 
+// `spiders` will change to user input, and it will be an event listener
