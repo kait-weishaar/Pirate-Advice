@@ -85,6 +85,8 @@ let displayInitialPage = function() {
                 heroImg.setAttribute("src", "put URL here?");
                 imgContainerEl.appendChild(heroImg);
 
+                //hide favorites
+
                 //create searchbar 
 
                 let form = document.createElement('form');
@@ -106,10 +108,13 @@ let displayInitialPage = function() {
                 //clear old giphy and display giphy to page --Z? reference in class giphy activity
                     const searchTerm = searchBar.value;
                     //
-                
+                 if (searchTerm) {
                     getAdvice(searchTerm);
                     saveSearch(searchTerm);
                     loadSearch(searchTerm); //goes to favorite button
+                 } else {
+                     return; //add modal if time
+                 }
                 })
 
 
