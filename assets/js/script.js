@@ -1,7 +1,7 @@
 const searchHistUL = document.querySelector(`#search-history`);
 const imgContainerEl = document.getElementById(`img-container`);
 const btnContainerEl = document.getElementById(`button-container`);
-
+const adviceContainerEl = document.getElementById(`advice-container`);
 const getAdvice = function(searchTerm){
     fetch(`https://api.adviceslip.com/advice/search/${searchTerm}`).then(function(response) {
         console.log(response)
@@ -21,6 +21,8 @@ const getAdvice = function(searchTerm){
     })
 };
 
+
+
 // pirate API link: https://api.funtranslations.com/translate/pirate.json
 
 const transPirate = function(advice){
@@ -32,6 +34,7 @@ const transPirate = function(advice){
         if (response.ok) {
             response.json().then(function(data) {
                 console.log(data.contents.translated)
+                adviceContainerEl.textContent = data.contents.translated;
             })
         }
     })
@@ -47,8 +50,9 @@ const saveSearch = function(searchTerm) {
 };
 
 const loadSearch = function() {
-    var saves = JSON.parse(localStorage.getItem("searchHist"));
 
+    var saves = JSON.parse(localStorage.getItem("searchHist"));
+    searchHistUL.innerHTML="";
     if (!saves) {
         return
     } else {
@@ -67,10 +71,12 @@ var historyAdd = function(searchTerm) {
 
 };
 
-loadSearch();
+
 
 getAdvice(`spiders`);
 // `spiders` will change to user input, and it will be an event listener
+
+let searchBtn;
 
 let displayInitialPage = function() {
 //get giphy through api call ---Dylan?
@@ -92,6 +98,44 @@ let displayInitialPage = function() {
 
 
 searchBtn.addEventListener("click", getAdvice);
+
+                let heroImg = document.createElement('img');
+                heroImg.setAttribute("src", "put URL here?");
+                imgContainerEl.appendChild(heroImg);
+
+                //create searchbar 
+
+                let form = document.createElement('form');
+                let searchBar = document.createElement("input");
+                    searchBar.setAttribute("type", "search");
+                    searchBar.setAttribute("name", "searchTerm");
+                    searchBar.setAttribute("placeholder", "Search");
+                let searchBtn =  document.createElement("input"); 
+                searchBtn.setAttribute("type", "button");  
+                form.appendChild(searchBar);
+                form.appendChild(searchBtn);
+                btnContainerEl.appendChild(form);
+
+                let favBtn = document.createElement('button');
+                btnContainerEl.appendChild(favBtn);
+
+                searchBtn.addEventListener("click",function() {
+                    //get giphy through api call ---Dylan?
+                //clear old giphy and display giphy to page --Z? reference in class giphy activity
+                    const searchTerm = searchBar.value;
+                    //
+                
+                    getAdvice(searchTerm);
+                    saveSearch(searchTerm);
+                    loadSearch(searchTerm); //goes to favorite button
+                })
+
+
+};
+
+displayInitialPage();
+
+
 //display initial page
         //searchbar 
         //pirate chest image
