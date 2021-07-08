@@ -15,19 +15,35 @@ const getAdvice = function(searchTerm){
                 advice = data.slips[0].advice;
                 console.log(advice);
                 transPirate(advice);
+                pirateGif();
             }
             })
         }
     })
 };
-
+const pirateGif = function() {
+    fetch(`https://api.giphy.com/v1/gifs/search?q=pirate&limit=20&offset=${Math.floor(Math.random() * (10))}&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN&limit=1`).then(function(response) {
+    console.log(response)
+    if (response.ok) {
+        response.json().then(function(data) {
+            console.log(data);
+            var gifDiv = document.querySelector(`#img-container`);
+                gifDiv.innerHTML = "";
+            var gifImg = document.createElement('img');
+            gifImg.setAttribute('src', data.data[Math.floor(Math.random() * (20))].images.fixed_height.url);
+            gifDiv.appendChild(gifImg);
+        })
+    }
+});
+}
 
 
 // pirate API link: https://api.funtranslations.com/translate/pirate.json
 
 const transPirate = function(advice){
-    splitAdvice = advice.split(` `);
-    urlAdvice = splitAdvice.join(`+`)
+    // splitAdvice = advice.split(` `);
+    // urlAdvice = splitAdvice.join(`+`);
+    let urlAdvice = encodeURIComponent(advice);
     console.log(urlAdvice);
     fetch(`https://api.funtranslations.com/translate/pirate.json?text=${urlAdvice}`).then(function(response) {
         console.log(response)
@@ -73,8 +89,6 @@ var historyAdd = function(searchTerm) {
 };
 
 
-
-getAdvice(`spiders`);
 // `spiders` will change to user input, and it will be an event listener
 
 let searchBtn;
