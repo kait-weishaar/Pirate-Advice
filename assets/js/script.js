@@ -138,15 +138,19 @@ displayInitialPage();
 
 
 //display initial page
-        //searchbar 
         //pirate chest image
         //favorites btn
+            // add "back" button to return to display initial page
 //add evnt listener to butn
-        //call fetch function with user input
-        //display advice to page
         //clear giphy
-        //get a giphy to the page
+
+        //pirate chest open image + giphy
+        
         //add btns to page to allow saving to favorites and clear favorites
                 //add event listener to each btn
                 //on favorites click - save to local storage
-                //on clear favorites - clear local storage
+                //on clear favorites - clear local storage/clear unordered list
+
+// css framework/utility classes
+
+// mobile first!! (mediaqueries?)
