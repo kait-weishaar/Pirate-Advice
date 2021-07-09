@@ -2,6 +2,8 @@ const searchHistUL = document.querySelector(`#search-history`);
 const imgContainerEl = document.getElementById(`img-container`);
 const btnContainerEl = document.getElementById(`button-container`);
 const adviceContainerEl = document.getElementById(`advice-container`);
+
+
 const getAdvice = function(searchTerm){
     fetch(`https://api.adviceslip.com/advice/search/${searchTerm}`).then(function(response) {
         console.log(response)
@@ -79,6 +81,10 @@ const loadSearch = function() {
     }
 }
 
+let displayFavorites = function() {
+    searchHistUL.classList.remove('invisible')
+}
+
 var historyAdd = function(searchTerm) {
     var newHisEl = document.createElement(`li`);
     var newHis = document.createTextNode(`${searchTerm}`);
@@ -91,15 +97,20 @@ var historyAdd = function(searchTerm) {
 
 // `spiders` will change to user input, and it will be an event listener
 
-let searchBtn;
+
 
 let displayInitialPage = function() {
+
+                //hide favorites and empty divs
+                searchHistUL.classList.add('invisible');
+                btnContainerEl.innerHTML = "";
 
                 let heroImg = document.createElement('img');
                 heroImg.setAttribute("src", "put URL here?");
                 imgContainerEl.appendChild(heroImg);
 
-                //hide favorites
+                
+
 
                 //create searchbar 
 
@@ -108,14 +119,18 @@ let displayInitialPage = function() {
                     searchBar.setAttribute("type", "search");
                     searchBar.setAttribute("name", "searchTerm");
                     searchBar.setAttribute("placeholder", "Search");
-                let searchBtn =  document.createElement("input"); 
+                let searchBtn =  document.createElement("input");
+                searchBtn.textContent = "Search"; 
                 searchBtn.setAttribute("type", "button");  
                 form.appendChild(searchBar);
                 form.appendChild(searchBtn);
                 btnContainerEl.appendChild(form);
 
                 let favBtn = document.createElement('button');
+                favBtn.textContent = "Favorites";
                 btnContainerEl.appendChild(favBtn);
+                let searchValue = searchBar.value;
+                
 
                 searchBtn.addEventListener("click",function() {
                     //get giphy through api call ---Dylan?
@@ -125,16 +140,33 @@ let displayInitialPage = function() {
                  if (searchTerm) {
                     getAdvice(searchTerm);
                     saveSearch(searchTerm);
-                    loadSearch(searchTerm); //goes to favorite button
+                     //goes to favorite button
                  } else {
                      return; //add modal if time
                  }
                 })
 
 
+                favBtn.addEventListener("click", function() {
+                    displayFavorites();
+                    loadSearch(searchValue);
+                    //btnContainerEl.classList.add("invisible")
+                    let backButton = document.createElement("button");
+                    backButton.textContent = "Back";
+                    btnContainerEl.appendChild(backButton);
+
+                    backButton.addEventListener("click", function() {
+                        displayInitialPage();
+                    })
+                })
+
+
 };
 
 displayInitialPage();
+
+
+
 
 
 //display initial page
