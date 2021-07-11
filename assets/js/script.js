@@ -124,17 +124,18 @@ let displayInitialPage = function() {
                     searchBar.setAttribute("type", "text");
                     searchBar.setAttribute("name", "searchTerm");
                     searchBar.setAttribute("placeholder", "Search");
-                    searchBar.classList.add("input","is-danger", "is-large", "is-rounded")
+                    searchBar.classList.add("input","is-danger", "is-medium")
                 let searchBtn =  document.createElement("input");
                     searchBtn.textContent = 'SEARCH'; 
                     searchBtn.setAttribute("type", "button");  
-                    searchBtn.classList.add("button","is-danger", "is-large", "has-text-white", "is-rounded")
+                    searchBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
                 form.appendChild(searchBar);
                 form.appendChild(searchBtn);
                 btnContainerEl.appendChild(form);
 
                 let favBtn = document.createElement('button');
                 favBtn.textContent = "Favorites";
+                favBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
                 btnContainerEl.appendChild(favBtn);
                 let searchValue = searchBar.value;
                 
