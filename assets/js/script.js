@@ -104,9 +104,13 @@ let displayInitialPage = function() {
                 //hide favorites and empty divs
                 searchHistUL.classList.add('invisible');
                 btnContainerEl.innerHTML = "";
+                imgContainerEl.innerHTML = "";
+                
 
                 let heroImg = document.createElement('img');
-                heroImg.setAttribute("src", "put URL here?");
+                heroImg.setAttribute("src", "./assets/images/treasure.svg");
+                heroImg.style.width = "30vw";
+                //heroImg.classList.add("column is-4");
                 imgContainerEl.appendChild(heroImg);
 
                 
@@ -115,13 +119,16 @@ let displayInitialPage = function() {
                 //create searchbar 
 
                 let form = document.createElement('form');
+                    form.classList.add("field", "has-addons")
                 let searchBar = document.createElement("input");
-                    searchBar.setAttribute("type", "search");
+                    searchBar.setAttribute("type", "text");
                     searchBar.setAttribute("name", "searchTerm");
                     searchBar.setAttribute("placeholder", "Search");
+                    searchBar.classList.add("input","is-danger", "is-large", "is-rounded")
                 let searchBtn =  document.createElement("input");
-                searchBtn.textContent = "Search"; 
-                searchBtn.setAttribute("type", "button");  
+                    searchBtn.textContent = 'SEARCH'; 
+                    searchBtn.setAttribute("type", "button");  
+                    searchBtn.classList.add("button","is-danger", "is-large", "has-text-white", "is-rounded")
                 form.appendChild(searchBar);
                 form.appendChild(searchBtn);
                 btnContainerEl.appendChild(form);
@@ -150,7 +157,7 @@ let displayInitialPage = function() {
                 favBtn.addEventListener("click", function() {
                     displayFavorites();
                     loadSearch(searchValue);
-                    //btnContainerEl.classList.add("invisible")
+                    form.classList.add("invisible")
                     let backButton = document.createElement("button");
                     backButton.textContent = "Back";
                     btnContainerEl.appendChild(backButton);
