@@ -35,6 +35,7 @@ const pirateGif = function() {
             var gifImg = document.createElement('img');
             gifImg.setAttribute('src', data.data[Math.floor(Math.random() * (20))].images.fixed_height.url);
             gifDiv.appendChild(gifImg);
+
         })
     }
 });
@@ -111,7 +112,7 @@ let displayInitialPage = function() {
                 let heroImg = document.createElement('img');
                 heroImg.setAttribute("src", "./assets/images/treasure.svg");
                 heroImg.style.width = "30vw";
-                //heroImg.classList.add("column is-4");
+                //heroImg.classList.add("column", "is-2");
                 imgContainerEl.appendChild(heroImg);
 
                 
