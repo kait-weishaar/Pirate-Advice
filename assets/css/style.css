@@ -10,7 +10,7 @@ ul {
     background-image: url("../images/background.svg");
     background-size: cover;
     
-    height: 60vh;
+    width: 100vw;
 }
 
 .is-size-one {

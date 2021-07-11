@@ -12,6 +12,7 @@ const getAdvice = function(searchTerm){
             console.log(data);
             if (!data.slips) {
                 console.log(data.message.text);
+                adviceContainerEl.textContent = "ARRRRGGGHHH! Ain't no pirate dat knows nothing 'bout " + searchTerm.value;
                 // will log: "No advice slips found matching that search term." Display to page
             } else {
                 advice = data.slips[0].advice;
@@ -162,7 +163,7 @@ let displayInitialPage = function() {
                     let backButton = document.createElement("button");
                     backButton.textContent = "Back";
                     btnContainerEl.appendChild(backButton);
-
+                    backButton.classList.add("button","is-danger", "is-medium", "has-text-white");
                     backButton.addEventListener("click", function() {
                         displayInitialPage();
                     })
