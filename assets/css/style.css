@@ -8,9 +8,8 @@ ul {
 
 .body {
     background-image: url("../images/background.svg");
-    background-size: cover;
-    
-    width: 100vw;
+   background-size: cover;
+  /* width: 100vw; */
 }
 
 .is-size-one {
@@ -24,4 +23,8 @@ ul {
 
 .chest-size {
     size:20vw;
+}
+
+.columns {
+    margin:0 0;
 }
