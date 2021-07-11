@@ -139,6 +139,9 @@ let displayInitialPage = function() {
                 favBtn.textContent = "Favorites";
                 favBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
                 btnContainerEl.appendChild(favBtn);
+                
+                
+                
                 let searchValue = searchBar.value;
                 
 
@@ -161,9 +164,10 @@ let displayInitialPage = function() {
                     displayFavorites();
                     loadSearch(searchValue);
                     form.classList.add("invisible")
+                    //make backbtn div, append to btn container
                     let backButton = document.createElement("button");
                     backButton.textContent = "Back";
-                    btnContainerEl.appendChild(backButton);
+                    btnContainerEl.appendChild(backButton); //append to backbtn div
                     backButton.classList.add("button","is-danger", "is-medium", "has-text-white");
                     backButton.addEventListener("click", function() {
                         displayInitialPage();
