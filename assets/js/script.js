@@ -4,6 +4,15 @@ const btnContainerEl = document.getElementById(`button-container`);
 const adviceContainerEl = document.getElementById(`advice-container`);
 
 
+let displayheroImg = function() {
+    imgContainerEl.innerHTML = "";
+    let heroImg = document.createElement('img');
+                heroImg.setAttribute("src", "./assets/images/treasure.svg");
+                heroImg.style.width = "30vw";
+                //heroImg.classList.add("column", "is-2");
+                imgContainerEl.appendChild(heroImg);
+}
+
 const getAdvice = function(searchTerm){
     fetch(`https://api.adviceslip.com/advice/search/${searchTerm}`).then(function(response) {
         console.log(response)
@@ -12,7 +21,8 @@ const getAdvice = function(searchTerm){
             console.log(data);
             if (!data.slips) {
                 console.log(data.message.text);
-                adviceContainerEl.textContent = "ARRRRGGGHHH! Ain't no pirate dat knows nothing 'bout " + searchTerm.value;
+                displayheroImg();
+                adviceContainerEl.textContent = "ARRRRGGGHHH! Ain't no pirate dat knows nothing 'bout " + searchTerm;
                 // will log: "No advice slips found matching that search term." Display to page
             } else {
                 advice = data.slips[0].advice;
@@ -109,11 +119,7 @@ let displayInitialPage = function() {
                 imgContainerEl.innerHTML = "";
                 
 
-                let heroImg = document.createElement('img');
-                heroImg.setAttribute("src", "./assets/images/treasure.svg");
-                heroImg.style.width = "30vw";
-                //heroImg.classList.add("column", "is-2");
-                imgContainerEl.appendChild(heroImg);
+                displayheroImg();
 
                 
 
