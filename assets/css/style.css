@@ -1,0 +1,30 @@
+.invisible {
+    display: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.body {
+    background-image: url("../images/background.svg");
+   background-size: cover;
+  /* width: 100vw; */
+}
+
+.is-size-one {
+    font-size: 28px;
+}
+
+.container {
+    background-color: rgba(255,255,255,0.75);
+}
+
+
+.chest-size {
+    size:20vw;
+}
+
+.columns {
+    margin:0 0;
+}
