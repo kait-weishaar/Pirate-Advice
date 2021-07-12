@@ -100,8 +100,11 @@ var historyAdd = function(searchTerm) {
     searchHistUL.append(newHisEl);
 };
 
+//currently not working atm
 var clearSearchHistory = function(clear) {
-    searchHistUL = [];
+    var clear = document.getElementById('search-history');
+    clear.innerHTML = '';
+    localStorage.clear();
 }
 
 let displayInitialPage = function() {
