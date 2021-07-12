@@ -29,3 +29,9 @@ ul {
 .columns {
     margin:0 0;
 }
+
+.button {
+    float: left;
+    margin: 5px;
+}
+

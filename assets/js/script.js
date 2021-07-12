@@ -168,7 +168,8 @@ let displayInitialPage = function() {
         backbtnDiv.appendChild(backButton);
         backButton.classList.add("button","is-danger", "is-medium", "has-text-white");
         backButton.addEventListener("click", function() {
-            displayInitialPage();
+            displayInitialPage();  
+            adviceContainerEl.innerHTML = ""; 
         })
         clearBtnDiv.innerHTML="";
         let clearBtn = document.createElement("button");
