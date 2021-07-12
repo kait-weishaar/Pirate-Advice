@@ -100,6 +100,10 @@ var historyAdd = function(searchTerm) {
     searchHistUL.append(newHisEl);
 };
 
+var clearSearchHistory = function(clear) {
+    searchHistUL = [];
+}
+
 let displayInitialPage = function() {
     //hide favorites and empty divs
     searchHistUL.classList.add('invisible');
@@ -125,10 +129,10 @@ let displayInitialPage = function() {
     form.appendChild(searchBtn);
     btnContainerEl.appendChild(form);
 
-    let favBtn = document.createElement('button');
-    favBtn.textContent = "Favorites";
-    favBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
-    btnContainerEl.appendChild(favBtn);
+    let historyBtn = document.createElement('button');
+    historyBtn.textContent = "History";
+    historyBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
+    btnContainerEl.appendChild(historyBtn);
                 
     let searchValue = searchBar.value;
     
@@ -144,9 +148,12 @@ let displayInitialPage = function() {
     })
                 
     let backbtnDiv = document.createElement("div");
-    btnContainerEl.appendChild(backbtnDiv);
-               
-    favBtn.addEventListener("click", function() {
+    btnContainerEl.appendChild(backbtnDiv);    
+
+    let clearBtnDiv = document.createElement("div");
+    btnContainerEl.appendChild(clearBtnDiv);    
+
+    historyBtn.addEventListener("click", function() {
         displayFavorites();
         loadSearch(searchValue);
         form.classList.add("invisible");
@@ -155,11 +162,18 @@ let displayInitialPage = function() {
         backbtnDiv.innerHTML="";
         let backButton = document.createElement("button");
         backButton.textContent = "Back";
-        //append to backbtn div
         backbtnDiv.appendChild(backButton);
         backButton.classList.add("button","is-danger", "is-medium", "has-text-white");
         backButton.addEventListener("click", function() {
             displayInitialPage();
+        })
+        clearBtnDiv.innerHTML="";
+        let clearBtn = document.createElement("button");
+        clearBtn.textContent = "Clear All";
+        clearBtnDiv.appendChild(clearBtn);
+        clearBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
+        clearBtn.addEventListener("click", function(){
+            clearSearchHistory();
         })
     })
 };
