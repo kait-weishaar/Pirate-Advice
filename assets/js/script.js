@@ -157,9 +157,9 @@ let displayInitialPage = function() {
                 searchBtn.addEventListener("click",function() {
                     //get giphy through api call ---Dylan?
                 //clear old giphy and display giphy to page --Z? reference in class giphy activity
-                    const searchTerm = searchBar.value;
+                    const searchTerm = searchBar.value.trim();
                     //
-                 if (searchTerm) {
+                 if (searchTerm) {.3
                     getAdvice(searchTerm);
                     saveSearch(searchTerm);
                      //goes to favorite button
