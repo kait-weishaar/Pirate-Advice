@@ -134,8 +134,10 @@ let displayInitialPage = function() {
                     searchBar.setAttribute("placeholder", "Search");
                     searchBar.classList.add("input","is-danger", "is-medium")
                 let searchBtn =  document.createElement("input");
-                    searchBtn.textContent = 'SEARCH'; 
+                    // searchBtn.textContent = "SEARCH"; 
                     searchBtn.setAttribute("type", "button");  
+                     searchBtn.setAttribute("value", "Search");
+                    
                     searchBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
                 form.appendChild(searchBar);
                 form.appendChild(searchBtn);
@@ -145,6 +147,7 @@ let displayInitialPage = function() {
                 favBtn.textContent = "Favorites";
                 favBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
                 btnContainerEl.appendChild(favBtn);
+                
                 
                 
                 
@@ -164,16 +167,22 @@ let displayInitialPage = function() {
                      return; //add modal if time
                  }
                 })
-
+                let backbtnDiv = document.createElement("div");
+                btnContainerEl.appendChild(backbtnDiv);
+               
 
                 favBtn.addEventListener("click", function() {
+                    
                     displayFavorites();
                     loadSearch(searchValue);
-                    form.classList.add("invisible")
+                    form.classList.add("invisible");
                     //make backbtn div, append to btn container
+                    
+                    backbtnDiv.innerHTML="";
                     let backButton = document.createElement("button");
                     backButton.textContent = "Back";
-                    btnContainerEl.appendChild(backButton); //append to backbtn div
+                    //append to backbtn div
+                    backbtnDiv.appendChild(backButton);
                     backButton.classList.add("button","is-danger", "is-medium", "has-text-white");
                     backButton.addEventListener("click", function() {
                         displayInitialPage();
