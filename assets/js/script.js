@@ -134,19 +134,20 @@ let displayInitialPage = function() {
     btnContainerEl.appendChild(form);
 
     //old favorites button
-    let historyBtn = document.createElement('button');
-    historyBtn.textContent = "History";
-    historyBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
-    btnContainerEl.appendChild(historyBtn);
+    let favBtn = document.createElement('button');
+    favBtn.textContent = "Favorites";
+    favBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
+    btnContainerEl.appendChild(favBtn);
              
     let searchValue = searchBar.value;
     
     searchBtn.addEventListener("click",function() {
-        saveTerm();
+        
         const searchTerm = searchBar.value.trim();
         if (searchTerm) {.3
             getAdvice(searchTerm);
-            saveSearch(searchTerm);
+            saveTerm(searchTerm);
+            //saveSearch(searchTerm);
             //goes to favorite button
         } else {
             return; //add modal if time
@@ -158,13 +159,14 @@ let displayInitialPage = function() {
     btnContainerEl.appendChild(saveBtnDiv); 
 
     var saveTerm = function(save){
+        // let searchValue = searchBar.value;
         saveBtnDiv.innerHTML="";
         let saveBtn = document.createElement("button");
         saveBtn.textContent = "Save Search";
         saveBtnDiv.appendChild(saveBtn);
         saveBtn.classList.add("button","is-danger", "is-medium", "has-text-white",);
         saveBtn.addEventListener("click", function(){
-        saveSearch();
+        saveSearch(save);
         })
     }    
              
@@ -177,7 +179,7 @@ let displayInitialPage = function() {
 
        
 
-    historyBtn.addEventListener("click", function() {
+    favBtn.addEventListener("click", function() {
         displayFavorites();
         loadSearch(searchValue);
         form.classList.add("invisible");
