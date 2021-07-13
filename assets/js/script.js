@@ -1,6 +1,8 @@
 const searchHistUL = document.querySelector(`#search-history`);
+
 const imgContainerEl = document.getElementById(`img-container`);
 const btnContainerEl = document.getElementById(`button-container`);
+btnContainerEl.classList.add(`is-grouped`);
 const adviceContainerEl = document.getElementById(`advice-container`);
 
 let displayheroImg = function() {
@@ -100,7 +102,6 @@ var historyAdd = function(searchTerm) {
     searchHistUL.append(newHisEl);
 };
 
-//currently not working atm
 var clearSearchHistory = function(clear) {
     var clear = document.getElementById('search-history');
     clear.innerHTML = '';
@@ -127,19 +128,21 @@ let displayInitialPage = function() {
     searchBtn.setAttribute("type", "button");  
     searchBtn.setAttribute("value", "Search");
                     
-    searchBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
+    searchBtn.classList.add("button","is-danger", "is-medium", "has-text-white", "ml-4");
     form.appendChild(searchBar);
     form.appendChild(searchBtn);
     btnContainerEl.appendChild(form);
 
+    //old favorites button
     let historyBtn = document.createElement('button');
     historyBtn.textContent = "History";
     historyBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
     btnContainerEl.appendChild(historyBtn);
-                
+             
     let searchValue = searchBar.value;
     
     searchBtn.addEventListener("click",function() {
+        saveTerm();
         const searchTerm = searchBar.value.trim();
         if (searchTerm) {.3
             getAdvice(searchTerm);
@@ -148,13 +151,31 @@ let displayInitialPage = function() {
         } else {
             return; //add modal if time
         }
+        
     })
-                
+
+    let saveBtnDiv = document.createElement("div");
+    btnContainerEl.appendChild(saveBtnDiv); 
+
+    var saveTerm = function(save){
+        saveBtnDiv.innerHTML="";
+        let saveBtn = document.createElement("button");
+        saveBtn.textContent = "Save Search";
+        saveBtnDiv.appendChild(saveBtn);
+        saveBtn.classList.add("button","is-danger", "is-medium", "has-text-white",);
+        saveBtn.addEventListener("click", function(){
+        saveSearch();
+        })
+    }    
+             
     let backbtnDiv = document.createElement("div");
     btnContainerEl.appendChild(backbtnDiv);    
 
     let clearBtnDiv = document.createElement("div");
-    btnContainerEl.appendChild(clearBtnDiv);    
+    btnContainerEl.appendChild(clearBtnDiv);
+    //btnContainerEl.appendChild(saveBtnDiv);     
+
+       
 
     historyBtn.addEventListener("click", function() {
         displayFavorites();
@@ -179,7 +200,9 @@ let displayInitialPage = function() {
         clearBtn.addEventListener("click", function(){
             clearSearchHistory();
         })
-    })
+
+        
+    }) 
 };
 
 displayInitialPage();
