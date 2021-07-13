@@ -96,10 +96,15 @@ let displayFavorites = function() {
 }
 
 var historyAdd = function(searchTerm) {
-    var newHisEl = document.createElement(`li`);
+    var newHisEl = document.createElement(`button`);
+    newHisEl.classList.add("button", "is-danger", "is-light");
     var newHis = document.createTextNode(`${searchTerm}`);
     newHisEl.appendChild(newHis)
     searchHistUL.append(newHisEl);
+
+    newHisEl.addEventListener("click", function() {
+        getAdvice(searchTerm);
+    });
 };
 
 var clearSearchHistory = function(clear) {
