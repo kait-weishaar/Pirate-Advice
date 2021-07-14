@@ -1,5 +1,4 @@
 const searchHistUL = document.querySelector(`#search-history`);
-
 const imgContainerEl = document.getElementById(`img-container`);
 const btnContainerEl = document.getElementById(`button-container`);
 btnContainerEl.classList.add(`is-grouped`);
@@ -9,7 +8,7 @@ let displayheroImg = function() {
     imgContainerEl.innerHTML = "";
     let heroImg = document.createElement('img');
     heroImg.setAttribute("src", "./assets/images/treasure.svg");
-    heroImg.style.width = "30vw";
+    heroImg.style.width = "20vw";
     //heroImg.classList.add("column", "is-2");
     imgContainerEl.appendChild(heroImg);
 }
@@ -138,11 +137,19 @@ let displayInitialPage = function() {
     form.appendChild(searchBtn);
     btnContainerEl.appendChild(form);
 
+    const inputButtonContainerEl = document.createElement('div');
+    btnContainerEl.appendChild(inputButtonContainerEl);
+
+    let favBtnDiv = document.createElement("div");
+    inputButtonContainerEl.appendChild(favBtnDiv); 
+
+    inputButtonContainerEl.classList.add("field","has-addons");
     //old favorites button
+    favBtnDiv.classList.add("control")
     let favBtn = document.createElement('button');
     favBtn.textContent = "Favorites";
-    favBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
-    btnContainerEl.appendChild(favBtn);
+    favBtn.classList.add("button","is-danger", "is-normal", "has-text-white", "control");
+    favBtnDiv.appendChild(favBtn);
              
     let searchValue = searchBar.value;
     
@@ -160,26 +167,30 @@ let displayInitialPage = function() {
         
     })
 
+    
+   
+
     let saveBtnDiv = document.createElement("div");
-    btnContainerEl.appendChild(saveBtnDiv); 
+    inputButtonContainerEl.appendChild(saveBtnDiv); 
 
     var saveTerm = function(save){
         // let searchValue = searchBar.value;
         saveBtnDiv.innerHTML="";
+        saveBtnDiv.classList.add("control")
         let saveBtn = document.createElement("button");
         saveBtn.textContent = "Save Search";
         saveBtnDiv.appendChild(saveBtn);
-        saveBtn.classList.add("button","is-danger", "is-medium", "has-text-white",);
+        saveBtn.classList.add("button","is-danger", "is-normal", "has-text-white");
         saveBtn.addEventListener("click", function(){
         saveSearch(save);
         })
     }    
              
     let backbtnDiv = document.createElement("div");
-    btnContainerEl.appendChild(backbtnDiv);    
+    inputButtonContainerEl.appendChild(backbtnDiv);    
 
     let clearBtnDiv = document.createElement("div");
-    btnContainerEl.appendChild(clearBtnDiv);
+    inputButtonContainerEl.appendChild(clearBtnDiv);
     //btnContainerEl.appendChild(saveBtnDiv);     
 
        
@@ -191,19 +202,21 @@ let displayInitialPage = function() {
         //make backbtn div, append to btn container
                     
         backbtnDiv.innerHTML="";
+        backbtnDiv.classList.add("control")
         let backButton = document.createElement("button");
         backButton.textContent = "Back";
         backbtnDiv.appendChild(backButton);
-        backButton.classList.add("button","is-danger", "is-medium", "has-text-white");
+        backButton.classList.add("button","is-danger", "is-normal", "has-text-white");
         backButton.addEventListener("click", function() {
             displayInitialPage();  
             adviceContainerEl.innerHTML = ""; 
         })
         clearBtnDiv.innerHTML="";
+        clearBtnDiv.classList.add("control")
         let clearBtn = document.createElement("button");
         clearBtn.textContent = "Clear All";
         clearBtnDiv.appendChild(clearBtn);
-        clearBtn.classList.add("button","is-danger", "is-medium", "has-text-white");
+        clearBtn.classList.add("button","is-danger", "is-normal", "has-text-white");
         clearBtn.addEventListener("click", function(){
             clearSearchHistory();
         })
