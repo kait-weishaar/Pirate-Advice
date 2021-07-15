@@ -230,4 +230,18 @@ displayInitialPage();
 
 
 
-//get button layout working better (css/bulma)
+//get button style layout working better (css/bulma)
+
+//non-repeatable history buttons (this one will take time...)
+
+//open chest icon if possible (something something interval 5000 or 3000)
+
+//possible css animations to be added in
+
+//search button activates with the ENTER button (possible switch to submit form instead of input?)
+//prevent.eventdefault for ENTER button switch 
+
+//fix the background when you are changing sizes (don't use responsive, use actually sizes)
+
+//possible set size for giphy (giphy size changes background size)
+//ensure that div for background and white div remain the same^^
