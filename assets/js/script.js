@@ -183,6 +183,7 @@ let displayInitialPage = function() {
         saveBtn.classList.add("button","is-danger", "is-normal", "has-text-white");
         saveBtn.addEventListener("click", function(){
         saveSearch(save);
+        loadSearch();
         })
     }    
              
@@ -226,3 +227,7 @@ let displayInitialPage = function() {
 };
 
 displayInitialPage();
+
+
+
+//get button layout working better (css/bulma)
