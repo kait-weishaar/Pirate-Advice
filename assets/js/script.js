@@ -142,8 +142,23 @@ let displayInitialPage = function() {
 
     let favBtnDiv = document.createElement("div");
     inputButtonContainerEl.appendChild(favBtnDiv); 
+    inputButtonContainerEl.classList.add("field");
+    
+    
+    let addon = function(){
+        if(document.documentElement.clientWidth > 610 ) 
+        {inputButtonContainerEl.classList.add("has-addons");
+        // backbtnDiv?.childNodes?.[0]?.click();
+        } else 
+        {inputButtonContainerEl.classList.remove("has-addons");
+        backbtnDiv?.childNodes?.[0]?.click();
+        }
+        
+    }
+    
+    window.addEventListener('resize', addon);
+    // window.addEventListener('mobile-size', addonRemove);
 
-    inputButtonContainerEl.classList.add("field","has-addons");
     //old favorites button
     favBtnDiv.classList.add("control")
     let favBtn = document.createElement('button');
@@ -222,6 +237,7 @@ let displayInitialPage = function() {
             clearSearchHistory();
         })
 
+     
         
     }) 
 };
@@ -245,3 +261,8 @@ displayInitialPage();
 
 //possible set size for giphy (giphy size changes background size)
 //ensure that div for background and white div remain the same^^
+
+
+//610x882 is minimum for responsive for has-addon limit for all four divs
+
+//make document.documentElemetn.clientWidth/Height to break has-addon
