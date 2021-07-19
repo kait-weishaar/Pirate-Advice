@@ -12,6 +12,6 @@ The app is built with HTML, CSS, JAVASCRIPT, and the BULMA css framework. It acc
 ![Image of app](./assets/images/group1.PNG)
 
 ## Website 
-https://kait-weishaar.github.io/Project-1/
+https://kait-weishaar.github.io/Pirate-Advice/
 
 
