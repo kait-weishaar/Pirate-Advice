@@ -6,7 +6,7 @@ The main goal of the app is to provide light-hearted advice to the user. The use
 ## Challenges and Areas for Improvement
 While the api interactions went surprisingly smoothly due to simplicity of the data being handled, handling the persistent data in local storage was a bit of a challenge. 
 
-## BUILT WITH: 
+## Built with: 
 The app is built with HTML, CSS, JAVASCRIPT, and the BULMA css framework. It accesses Advice Slip API, Giffy API, and Fun Translations API.
 
 ## Website 
