@@ -9,7 +9,7 @@ While the api interactions went surprisingly smoothly due to simplicity of the d
 ## Built with: 
 The app is built with HTML, CSS, JAVASCRIPT, and the BULMA css framework. It accesses Advice Slip API, Giffy API, and Fun Translations API.
 
-![Image of app](./assets/images/group-1.png)
+![Image of app](./assets/images/group1.png)
 
 ## Website 
 https://kait-weishaar.github.io/Project-1/
